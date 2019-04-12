@@ -1,0 +1,21 @@
+@keyframes play54 {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -1296px 0px;
+  }
+}
+.circle {
+  animation-duration: 900ms;
+  animation-timing-function: steps(54);
+  width: 24px;
+  height: 24px;
+  animation-fill-mode: forwards;
+  background-image: url(sprite_60fps.svg);
+  background-repeat: no-repeat;
+  transform: scale(5);
+}
+.circle.play {
+  animation-name: play54;
+}

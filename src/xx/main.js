@@ -4,11 +4,8 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
-import './sass/main.scss'
-
 Vue.config.productionTip = false
 
-// @ts-ignore
 new Vue({
   router,
   store,

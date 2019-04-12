@@ -1,0 +1,20 @@
+@keyframes play54 {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -1296px 0px;
+  }
+}
+.cross {
+  animation-duration: 600ms;
+  animation-timing-function: steps(54);
+  width: 24px;
+  height: 24px;
+  animation-fill-mode: forwards;
+  transform: scale(5);
+  background-image: url(sprite_60fps.svg);
+}
+.cross.play {
+  animation-name: play54;
+}
