@@ -12,7 +12,6 @@
 
     box-shadow: none !important; } }
 
-    
 
 // width & height
 .h-100 {
@@ -45,6 +44,10 @@
 .left { text-align: left !important; }
 .center { text-align: center !important; }
 
+// colors
+.black-text { color: #000 !important}
+.white-text { color: #fff !important}
+.dark-text { color: #343a40 !important}
 
 // Shadows
 .shadow { box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !important; }
@@ -57,3 +60,5 @@
 .bd-0 { border-width: 0 !important;}
 .bd-1 { border-width: 1 !important;}
 .bd-2 { border-width: 2 !important;}
+
+.pointer { cursor: pointer; }    

@@ -1,37 +1,37 @@
 <template>
-  <div class="TicTacToe">
-
-    <div class="game">
-      <div class="center">
-        <h1>TicTacToe
-          <span v-if="isX">X</span>
-          <span v-else>O</span>
-        </h1>
-        <p>{{ turns }}</p>
-        <h1 v-if="!isSomeoneWon && turns == 9">draw</h1>
-      </div>
-
-      <section class="cells">
-        <span v-for="(cell, i) in cells" :key="i">
-          <button
-            ref="cells"
-            :class="{'disable': disableCell(i)}"
-            @click="turn(i)"
-            class="cells__cell" >
-          <!-- {{ cell }} -->
-          <div v-show="cells[i] == 'X'" class="cross play"></div>
-          <div v-show="cells[i] == 'O'" class="circle play"></div>
-          </button>
-        </span>
+  <Layout>
+    <section class="TicTacToe">
+    <!-- <h2>{{ ifGameDraw }}</h2> -->
+      <section class="score-board d-flex justify-content-between">
+        <div :class="{'active-player': isX}" class="chip shadow">X - 0</div>
+        <div :class="{'active-player': !isX}" class="chip shadow">O - 3</div>
       </section>
 
-      <div class="button-group cont d-flex justify-content-between align-items-center">
-        <button @click="newGame" class="button">New game</button>
-      </div> 
-    </div>
+        <section v-if="true" class="cells">
+          <span class="cell__bg" v-for="(cell, i) in cells" :key="i">
+            <button
+              ref="cells"
+              :class="{'disable': disableCell(i)}"
+              @click="turn(i)"
+              class="cells__cell"
+            >
+              <div v-show="cells[i] == 'X'" class="cross play"></div>
+              <div v-show="cells[i] == 'O'" class="circle play"></div>
+            </button>
+          </span>
+        </section>
 
-    <ag-prompt-score v-if="!isSomeoneWon && turns == 9"></ag-prompt-score>
-  </div>
+        <section class="center">
+          <button @click="newGame" class="link-btn">Restart</button>
+        </section>
+
+    </section>
+
+    <ag-prompt-score :closePrompt="closePrompt"
+      :won="isSomeoneWon" v-if="ifGameDraw || showPrompt"
+    ></ag-prompt-score>
+
+  </Layout>
 </template>
  
 <script>
@@ -63,11 +63,7 @@ export default {
   methods: {
     newGame() {
       // resets everything to get the shits right back on
-      this.isGameRunning = true
-      this.isSomeoneWon = false
-      this.turns = 0
-      this.cells = ['#', '#', '#', '#', '#', '#', '#', '#', '#']
-      this.$refs.cells.forEach(cell => (cell.id = ''))
+      this.playAgain()
     },
     turn(index) {
       // arg index is cell position which was clicked
@@ -109,15 +105,32 @@ export default {
           this.$refs.cells[this.combinations[i][1]].id = 'rotate-cell'
           this.$refs.cells[this.combinations[i][2]].id = 'rotate-cell'
           this.isSomeoneWon = true
+          setTimeout(() => {
+            this.showPrompt = true
+          }, 1000)
         }
       }
-    }
+    },
+    closePrompt() {
+      this.playAgain()
+    },
+    playAgain () {
+      this.isGameRunning = true
+      this.isSomeoneWon = false
+      this.turns = 0
+      this.cells = ['#', '#', '#', '#', '#', '#', '#', '#', '#']
+      this.$refs.cells.forEach(cell => (cell.id = ''))
+      this.showPrompt = false
+    },
   },
   computed: {
     // eslint-disable-next-line
     disableCell(index) {
       // it gets true if the clicked tile doesn't have #
       return index => this.cells[index] !== '#'
+    },
+    ifGameDraw() {
+      return !this.isSomeoneWon && this.turns == 9
     }
   },
   components: {
@@ -127,26 +140,39 @@ export default {
 </script>
  
 <style lang="scss" scoped>
+.cell__bg,
+.TicTacToe {
+  background: #fff;
+}
+.TicTacToe {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 .cells {
   display: grid;
-  width: 50rem;
-  height: 50rem;
+  max-width: 50rem;
+  max-height: 50rem;
+  height: 40rem;
+  width: 40rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 5px;
-  margin: 50px auto;
-  background: rgb(26, 24, 27);
-  // border: 5px solid #000;
-  span {
-    background: #fff;
-  }
+  // grid border color
+  background: rgb(201, 201, 201);
+
+  // span { background: #fff; }
+
   &__cell {
     border-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: fill;
-    background: #fff;
+    background: transparent;
     cursor: pointer;
     font-size: 3rem;
     width: 100%;
@@ -159,14 +185,38 @@ export default {
 
   #rotate-cell {
     transform: rotate(360deg);
-    background: rgb(134, 71, 218);
+    background: rgb(243, 237, 250);
   }
 }
 
-.cont { 
-  width: 50rem;
-  margin: 0 auto;
-  background: rgba(0, 0, 0, 0.438);
+
+.link-btn {
+  font-size: 3.8rem;
+  color: var(--dark);
 }
-// .button-group { }
+.score-board {
+  max-width: 50rem;
+  width: 40rem;
+  // background: rgba(0, 0, 0, 0.432);
+}
+.chip {
+  font-size: 3rem;
+  padding: 0rem 2rem;
+  width: 18rem;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 400ms ease;
+}
+.active-player {
+  background: aquamarine;
+}
+
+@media only screen and  (max-width: 320px) {
+  .score-board { width: 38rem; }
+  .cells {
+    width: 38rem;
+    height: 38rem;
+  }
+
+}
 </style>

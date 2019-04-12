@@ -3,10 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+import Layout from './layouts/default.vue'
 
 import './sass/main.scss'
 
 Vue.config.productionTip = false
+
+// layout
+Vue.component('Layout', Layout)
 
 // @ts-ignore
 new Vue({

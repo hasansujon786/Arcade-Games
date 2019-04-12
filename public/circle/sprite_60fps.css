@@ -7,7 +7,7 @@
   }
 }
 .circle {
-  animation-duration: 900ms;
+  animation-duration: 600ms;
   animation-timing-function: steps(54);
   width: 24px;
   height: 24px;

@@ -1,23 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="">
     <router-view/>
   </div>
 </template>
 
 <script>
-let app = 'hasan'
-
-
-export default {
-  
-  methods: {
-    callApp() {
-      let app = 'hasan'
-
-    }
-
-  }
-}
 </script>
 
 <style lang="scss">

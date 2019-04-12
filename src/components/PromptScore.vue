@@ -1,8 +1,15 @@
 <template>
-  <section class="PromptScore flex-center">
+  <section @click="closePrompt" class="PromptScore flex-center">
     <div class="content">
-      <h2 class="center">O <sup>+</sup></h2>
-      <h3>{{ 3  }} - {{ 0 }}</h3>
+      <!-- <h2 class="center">O <sup>+</sup></h2>
+      <h3>{{ 3  }} - {{ 0 }}</h3> -->
+      <span v-if="won">
+        <h3>Won</h3>
+      </span>
+      <span v-else>
+        <h3>Draw</h3>
+
+      </span>
     </div>
   </section>
 </template>
@@ -13,8 +20,20 @@ export default {
   data() {
     return {}
   },
-  methods: {},
-  computed: {}
+  props: {
+    closePrompt: {
+      type: Function,
+    },
+    won: {
+      type: Boolean,
+      // default: false
+    },
+  },
+  methods: {
+  },
+  computed: {
+
+  }
 }
 </script>
 
