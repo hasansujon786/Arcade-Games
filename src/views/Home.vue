@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-      <h1 class="center pt-5">Arcade</h1>
+      <h1 class="center">Arcade Games</h1>
       <ag-welcome></ag-welcome>
   </div>
 </template>
@@ -20,9 +20,9 @@ export default {
 <style lang="scss" scoped>
 .home {
   background: var(--dark);
-  height: 100vh;
+  min-height: 100vh;
 }
 h1 {
-  // padding-top: 10rem;
+  padding-top: 7%;
 }
 </style>

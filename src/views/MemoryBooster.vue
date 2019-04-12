@@ -1,7 +1,9 @@
 <template>
-  <div class="MemoryBooster">
-    <h1>MemoryBooster</h1>
-  </div>
+  <Layout>
+    <div class="MemoryBooster h-100 flex-center">
+      <h1>MemoryBooster</h1>
+    </div>
+  </Layout>
 </template>
  
 <script>

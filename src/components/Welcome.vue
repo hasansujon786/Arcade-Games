@@ -1,12 +1,12 @@
 <template>
   <div class="Welcome">
-    <div class="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+    <div class="nav justify-content-between">
       <router-link :to="{name: 'TicTacToe'}">TicTacToe</router-link>
       <router-link :to="{name: 'MemoryBooster'}">MemoryBooster</router-link>
       <router-link :to="{name: 'RockPaperScissor'}">RockPaperScissor</router-link>
-      <router-link :to="{name: 'RockPaperScissor'}">RockPaperScissor</router-link>
+      <router-link :to="{name: 'about'}">Coming Soon..</router-link>
+      <router-link :to="{name: 'about'}">Coming Soon..</router-link>
+      <router-link :to="{name: 'about'}">Coming Soon..</router-link>
     </div>
   </div>
 </template>
@@ -23,23 +23,33 @@ export default {
 </script>
  
 <style lang="scss" scoped>
+@import '../sass/modules/media-queries/mobile-first';
+
 .nav {
-  // border: 1px solid #000;
-  height: 50rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 3rem;
-  padding: 7rem;
-  margin-top: 5rem;
+  margin: 0rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  max-width: 90rem;
+  flex-direction: column;
+  margin-top: 7%;
+  @include respond-mf(lt-phablet) {
+    flex-direction: row;
+  }
 
   a {
+    height: 20rem;
     border: 1px solid #000;
     font-weight: bold;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 3rem;
+    @include respond-mf(lt-phablet) {
+      flex: 0 0 30%;
+    }
   }
 }
 </style>

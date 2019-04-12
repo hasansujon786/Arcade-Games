@@ -1,7 +1,9 @@
 <template>
-  <div class="RockPaperScissor">
-    <h1>RockPaperScissor</h1>
-  </div>
+  <Layout>
+    <div class="RockPaperScissor flex-center h-100">
+      <h1>RockPaperScissor</h1>
+    </div>
+  </Layout>
 </template>
  
 <script>

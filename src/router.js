@@ -5,6 +5,8 @@ import Home from './views/Home.vue'
 Vue.use(Router)
 
 export default new Router({
+  // mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
@@ -30,7 +32,7 @@ export default new Router({
       path: '/tic-tac-toe',
       name: 'TicTacToe',
       component: () => import(/* webpackChunkName: "TicTacToe" */ './views/TicTacToe.vue')
-    },
+    }
     // {
     //   path: '/about',
     //   name: 'about',
