@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       isGameRunning: true,
+      // let myArr = Array(9).fill(null)
       cells: ['#', '#', '#', '#', '#', '#', '#', '#', '#'],
       combinations: [
         [0, 1, 2],
