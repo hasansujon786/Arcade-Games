@@ -1,22 +1,20 @@
 <template>
   <Layout>
     <div class="RockPaperScissor h-100">
-      <button class="tip__btn">
-        i
-      </button>
+      <button class="tip__btn">i</button>
+
       <section class="score-box m-auto d-flex center justify-content-around">
         <div>
-          <h3>Comp</h3>
-          <h1>0</h1>
+          <h3>Comp</h3> <h1>{{ compScore }}</h1>
         </div>
 
+        <h1 class="center">{{ whoWon }}</h1>
+
         <div>
-          <h3>User</h3>
-          <h1>{{ userCanChoice }}</h1>
+          <h3>User</h3> <h1>{{ userScore }}</h1>
         </div>
       </section>
 
-      <h1 class="center">{{ whoWon }}</h1>
 
       <section class="comp">
           <figure class="comp__img-box  m-auto">
@@ -125,6 +123,17 @@ export default {
         // error
         console.error('err in check who won')
       }
+
+
+      // incress the score of winner
+      this.incressScore()
+    },
+    incressScore() {
+      if( this.whoWon == 'user' ) {
+       this.userScore++ 
+      } else if( this.whoWon == 'comp' ) {
+       this.compScore++
+      } 
     }
   },
   computed: {
