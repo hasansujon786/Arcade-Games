@@ -1,55 +1,72 @@
 <template>
   <Layout>
-    <div class="RockPaperScissor h-100">
+    <section class="RockPaperScissor h-100">
       <button class="tip__btn">i</button>
 
       <section class="score-box m-auto d-flex center justify-content-around">
         <div>
-          <h3>Comp</h3> <h1>{{ compScore }}</h1>
+          <h3>Comp</h3>
+          <h1>{{ compScore }}</h1>
         </div>
 
         <h1 class="center">{{ whoWon }}</h1>
 
         <div>
-          <h3>User</h3> <h1>{{ userScore }}</h1>
+          <h3>User</h3>
+          <h1>{{ userScore }}</h1>
         </div>
       </section>
 
-
       <section class="comp">
-          <figure class="comp__img-box  m-auto">
-            <button @click="startGame" class="comp__btn chose-btn border" >
-              <img v-show="compSelector == 0" src="@/assets/rps/rock.jpg" alt="rock"  class="rounded-circle">
-              <img v-show="compSelector == 1" src="@/assets/rps/paper.jpg" alt="paper"  class="rounded-circle">
-              <img v-show="compSelector == 2" src="@/assets/rps/scissor.jpg" alt="scissor"  class="rounded-circle">
-            </button>
-          </figure>
+        <figure class="comp__img-box m-auto">
+          <button @click="startGame" class="comp__btn chose-btn border">
+            <img
+              v-show="compSelector == 0"
+              src="@/assets/rps/rock.jpg"
+              alt="rock"
+              class="rounded-circle"
+            >
+            <img
+              v-show="compSelector == 1"
+              src="@/assets/rps/paper.jpg"
+              alt="paper"
+              class="rounded-circle"
+            >
+            <img
+              v-show="compSelector == 2"
+              src="@/assets/rps/scissor.jpg"
+              alt="scissor"
+              class="rounded-circle"
+            >
+          </button>
+        </figure>
       </section>
 
       <section v-if="true" class="user container mt-5">
         <div class="m-auto" style="max-width: 54rem">
-        <figure class="user__img-box m-auto">
-          <button @click="getUserChoice('rock')" class="user__btn chose-btn border">
-            <img src="@/assets/rps/rock.jpg" alt="rock" class="rounded-circle">
-          </button>
-        </figure>
-        <figure class="user__img-box  m-auto">
-          <button @click="getUserChoice('scissor')" class="user__btn chose-btn border">
-            <img src="@/assets/rps/scissor.jpg" alt="scissor" class="rounded-circle">
-          </button>
-        </figure>
-        <figure class="user__img-box  m-auto">
-          <button @click="getUserChoice('paper')" class="user__btn chose-btn border">
-            <img src="@/assets/rps/paper.jpg" alt="paper" class="rounded-circle">
-          </button>
-        </figure>
+          <figure class="user__img-box m-auto">
+            <button @click="getUserChoice('rock')" class="user__btn chose-btn border">
+              <img src="@/assets/rps/rock.jpg" alt="rock" class="rounded-circle">
+            </button>
+          </figure>
+          <figure class="user__img-box m-auto">
+            <button @click="getUserChoice('scissor')" class="user__btn chose-btn border">
+              <img src="@/assets/rps/scissor.jpg" alt="scissor" class="rounded-circle">
+            </button>
+          </figure>
+          <figure class="user__img-box m-auto">
+            <button @click="getUserChoice('paper')" class="user__btn chose-btn border">
+              <img src="@/assets/rps/paper.jpg" alt="paper" class="rounded-circle">
+            </button>
+          </figure>
         </div>
       </section>
 
-    </div>
+
+    </section> 
   </Layout>
 </template>
- 
+
 <script>
 export default {
   name: 'RockPaperScissor',
@@ -63,7 +80,7 @@ export default {
       userChoice: null,
       userCanChoice: false,
       intervel: null,
-      showTip: false,
+      showTip: false
     }
   },
   methods: {
@@ -77,7 +94,7 @@ export default {
       }
     },
     getUserChoice(uchoice) {
-      if(this.userCanChoice) {
+      if (this.userCanChoice) {
         clearInterval(this.intervel)
         this.userCanChoice = false
         this.userChoice = uchoice
@@ -91,32 +108,32 @@ export default {
       this.compSelector = Math.floor(Math.random() * (2 - 0 + 1) + 0)
     },
     loopCompImg() {
-      if(this.compSelector < 2) {
+      if (this.compSelector < 2) {
         this.compSelector++
       } else {
         this.compSelector = 0
       }
     },
     checWhoWon(user, comp) {
-      if(user == 'rock' && comp == 'paper') {
+      if (user == 'rock' && comp == 'paper') {
         // comp won
         this.whoWon = 'comp'
-      } else if(user == 'paper' && comp == 'rock') {
+      } else if (user == 'paper' && comp == 'rock') {
         // user won
         this.whoWon = 'user'
-      } else if(user == 'rock' && comp == 'scissor') {
+      } else if (user == 'rock' && comp == 'scissor') {
         // user won
         this.whoWon = 'user'
-      } else if(user == 'scissor' && comp == 'rock') {
+      } else if (user == 'scissor' && comp == 'rock') {
         // comp won
         this.whoWon = 'comp'
-      } else if(user == 'scissor' && comp == 'paper') {
+      } else if (user == 'scissor' && comp == 'paper') {
         // user won
         this.whoWon = 'user'
-      } else if(user == 'paper' && comp == 'scissor') {
+      } else if (user == 'paper' && comp == 'scissor') {
         // comp won
         this.whoWon = 'comp'
-      } else if(user == comp) {
+      } else if (user == comp) {
         // draw
         this.whoWon = 'draw'
       } else {
@@ -124,20 +141,18 @@ export default {
         console.error('err in check who won')
       }
 
-
       // incress the score of winner
       this.incressScore()
     },
     incressScore() {
-      if( this.whoWon == 'user' ) {
-       this.userScore++ 
-      } else if( this.whoWon == 'comp' ) {
-       this.compScore++
-      } 
+      if (this.whoWon == 'user') {
+        this.userScore++
+      } else if (this.whoWon == 'comp') {
+        this.compScore++
+      }
     }
   },
-  computed: {
-  },
+  computed: {}
   // beforeRouteLeave (to, from, next) {
   //   let ans = prompt('hey')
   //   // if(ans ==)
@@ -146,7 +161,7 @@ export default {
   // }
 }
 </script>
- 
+
 <style lang="scss" scoped>
 .score-box {
   max-width: 50rem;
@@ -157,7 +172,7 @@ export default {
   background: transparent;
   border-radius: 50%;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   &:hover {
     border: 1px solid #000 !important;
   }
@@ -183,25 +198,23 @@ export default {
     }
     &:first-child {
       float: left;
-
     }
     &:last-child {
-
     }
   }
 
   &__btn {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     &:focus {
       border: 1px solid #000000 !important;
-      transform: scale(1.2)
+      transform: scale(1.2);
     }
   }
 }
 
 .tip {
   &__btn {
-   --bg-color: var(--success);
+    --bg-color: var(--success);
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -222,6 +235,10 @@ export default {
   }
 }
 
-:focus {outline:none;}
-::-moz-focus-inner {border:0;}
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
+}
 </style>
