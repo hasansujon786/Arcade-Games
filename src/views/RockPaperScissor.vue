@@ -80,7 +80,8 @@ export default {
       userChoice: null,
       userCanChoice: false,
       intervel: null,
-      showTip: false
+      showTip: false,
+      
     }
   },
   methods: {
@@ -173,18 +174,18 @@ export default {
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s ease;
-  &:hover {
-    border: 1px solid #000 !important;
-  }
 }
+.pressed {
+  border: 1px solid #000 !important;
+}
+
 .comp {
   &__img-box {
     width: 22rem;
     height: 22rem;
   }
 
-  &__btn {
-  }
+  // &__btn { }
 }
 .user {
   text-align: center;
@@ -199,8 +200,7 @@ export default {
     &:first-child {
       float: left;
     }
-    &:last-child {
-    }
+    // &:last-child { }
   }
 
   &__btn {
