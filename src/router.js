@@ -32,12 +32,12 @@ export default new Router({
       path: '/tic-tac-toe',
       name: 'TicTacToe',
       component: () => import(/* webpackChunkName: "TicTacToe" */ './views/TicTacToe.vue')
-    }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // },
+    },
+    {
+      path: '/data',
+      name: 'data_page',
+      component: () => import(/* webpackChunkName: "about" */ './views/Data.vue')
+    },
     // {
     //   path: '/about',
     //   name: 'about',

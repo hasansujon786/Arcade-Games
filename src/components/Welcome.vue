@@ -6,7 +6,7 @@
       <router-link :to="{name: 'RockPaperScissor'}">RockPaperScissor</router-link>
       <router-link :to="{name: 'about'}">Coming Soon..</router-link>
       <router-link :to="{name: 'about'}">Coming Soon..</router-link>
-      <router-link :to="{name: 'about'}">Coming Soon..</router-link>
+      <router-link :to="{name: 'data_page'}">Data</router-link>
     </div>
   </div>
 </template>
