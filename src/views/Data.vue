@@ -1,6 +1,6 @@
 <template>
   <div class="data container">
-    <h1>data</h1>
+    <h1>Data Page</h1>
     <button @click="fetchData" class="button">get data</button>
     <div v-if="allData">
       <h2  v-for="(user, i) in allData" :key="i">{{ user.name }}</h2>
