@@ -1,41 +1,38 @@
 <template>
   <Layout>
     <section class="TicTacToe">
-    <!-- <h2>{{ ifGameDraw }}</h2> -->
-      <section class="score-board d-flex justify-content-between">
-        <div :class="{'active-player': isX}" class="chip shadow">X - 0</div>
-        <div :class="{'active-player': !isX}" class="chip shadow">O - 3</div>
+      <ScoreBoard :O="O" :X="X" :isX="isX" :changePlayer="changePlayer" />
+
+      <section v-if="true" class="cells">
+        <span class="cell__bg" v-for="(cell, i) in cells" :key="i">
+          <button
+            ref="cells"
+            :class="{ disable: disableCell(i) }"
+            @click="turn(i)"
+            class="cells__cell"
+          >
+            <div v-show="cells[i] == 'X'" class="cross play"></div>
+            <div v-show="cells[i] == 'O'" class="circle play"></div>
+          </button>
+        </span>
       </section>
 
-        <section v-if="true" class="cells">
-          <span class="cell__bg" v-for="(cell, i) in cells" :key="i">
-            <button
-              ref="cells"
-              :class="{'disable': disableCell(i)}"
-              @click="turn(i)"
-              class="cells__cell"
-            >
-              <div v-show="cells[i] == 'X'" class="cross play"></div>
-              <div v-show="cells[i] == 'O'" class="circle play"></div>
-            </button>
-          </span>
-        </section>
-
-        <section class="center">
-          <button @click="newGame" class="link-btn">Restart</button>
-        </section>
-
+      <section class="center">
+        <button @click="newGame" class="link-btn">Restart</button>
+      </section>
     </section>
 
-    <ag-prompt-score :closePrompt="closePrompt"
-      :won="isSomeoneWon" v-if="ifGameDraw || showPrompt"
+    <ag-prompt-score
+      :closePrompt="closePrompt"
+      :someoneWon="isSomeoneWon"
+      v-if="ifGameDraw || showPrompt"
     ></ag-prompt-score>
-
   </Layout>
 </template>
- 
+
 <script>
 import PromptScoreVue from '@/components/PromptScore.vue'
+import ScoreBoard from '@/components/ScoreBoard.vue'
 
 export default {
   name: 'TicTacToe',
@@ -58,12 +55,15 @@ export default {
       turns: 0,
       isSomeoneWon: false,
       addClass: false,
-      showPrompt: false
+      showPrompt: false,
+      X: 0,
+      O: 0
     }
   },
   methods: {
     newGame() {
       // resets everything to get the shits right back on
+      // alert(`${innerHeight} ${innerWidth}`)
       this.playAgain()
     },
     turn(index) {
@@ -72,8 +72,6 @@ export default {
 
       // check who's turn it is & calls the method to go next
       this.isX ? this.addMarkToCell(index, 'X') : this.addMarkToCell(index, 'O')
-      // tracking the counts of all turns : max 9
-      this.turns++
     },
     addMarkToCell(index, playerMark) {
       // if the spot is free which was clicked
@@ -84,6 +82,8 @@ export default {
         this.checkWin(playerMark)
         // change the player
         this.isX = !this.isX
+        // tracking the counts of all turns : max 9
+        this.turns++
       } else {
         alert('spot taken')
       }
@@ -93,19 +93,20 @@ export default {
       for (let i = 0; i < this.combinations.length; i++) {
         if (
           /* 
-            !Most complex part! I won't bother you'll get it, after awhile
+            !Most complex part! I won't bother you'll get it, after a while
           */
           this.cells[this.combinations[i][0]] == playerMark &&
           this.cells[this.combinations[i][1]] == playerMark &&
           this.cells[this.combinations[i][2]] == playerMark
         ) {
           // Now the current player has won.
-          // So show some cool stuff
           this.isGameRunning = false
+          this.isSomeoneWon = true
+          // So show some cool stuff
           this.$refs.cells[this.combinations[i][0]].id = 'rotate-cell'
           this.$refs.cells[this.combinations[i][1]].id = 'rotate-cell'
           this.$refs.cells[this.combinations[i][2]].id = 'rotate-cell'
-          this.isSomeoneWon = true
+          this.increseScore(playerMark)
           setTimeout(() => {
             this.showPrompt = true
           }, 1000)
@@ -115,7 +116,7 @@ export default {
     closePrompt() {
       this.playAgain()
     },
-    playAgain () {
+    playAgain() {
       this.isGameRunning = true
       this.isSomeoneWon = false
       this.turns = 0
@@ -123,6 +124,16 @@ export default {
       this.$refs.cells.forEach(cell => (cell.id = ''))
       this.showPrompt = false
     },
+    changePlayer(bool) {
+      this.isX = bool
+    },
+    increseScore(playerMark) {
+      if (playerMark == 'X') {
+        this.X++
+      } else {
+        this.O++
+      }
+    }
   },
   computed: {
     // eslint-disable-next-line
@@ -135,19 +146,31 @@ export default {
     }
   },
   components: {
-    agPromptScore: PromptScoreVue
+    agPromptScore: PromptScoreVue,
+    ScoreBoard
+  },
+
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
   }
 }
 </script>
- 
+
 <style lang="scss" scoped>
 .cell__bg,
 .TicTacToe {
-  background: #fff;
+  --royal-blue: #3a54ff;
+  --hot-pink: #ff4685;
+  --bd-color: rgba(114, 114, 114, 0.36);
+  background-color: #161631;
 }
 .TicTacToe {
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -163,9 +186,7 @@ export default {
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 5px;
   // grid border color
-  background: rgb(201, 201, 201);
-
-  // span { background: #fff; }
+  background-color: var(--bd-color);
 
   &__cell {
     border-width: 0;
@@ -190,34 +211,15 @@ export default {
   }
 }
 
-
 .link-btn {
   font-size: 3.8rem;
   color: var(--dark);
 }
-.score-board {
-  max-width: 50rem;
-  width: 40rem;
-  // background: rgba(0, 0, 0, 0.432);
-}
-.chip {
-  font-size: 3rem;
-  padding: 0rem 2rem;
-  width: 18rem;
-  border-radius: 4px;
-  text-align: center;
-  transition: background-color 400ms ease;
-}
-.active-player {
-  background: aquamarine;
-}
 
-@media only screen and  (max-width: 320px) {
-  .score-board { width: 38rem; }
+@media only screen and (max-width: 320px) {
   .cells {
     width: 38rem;
     height: 38rem;
   }
-
 }
 </style>

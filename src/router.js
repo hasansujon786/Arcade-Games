@@ -21,7 +21,8 @@ export default new Router({
     {
       path: '/rock-paper-scissor',
       name: 'RockPaperScissor',
-      component: () => import(/* webpackChunkName: "rockPaperScissor" */ './views/RockPaperScissor.vue')
+      component: () =>
+        import(/* webpackChunkName: "rockPaperScissor" */ './views/RockPaperScissor.vue')
     },
     {
       path: '/memory-booster',
@@ -32,12 +33,7 @@ export default new Router({
       path: '/tic-tac-toe',
       name: 'TicTacToe',
       component: () => import(/* webpackChunkName: "TicTacToe" */ './views/TicTacToe.vue')
-    },
-    {
-      path: '/data',
-      name: 'data_page',
-      component: () => import(/* webpackChunkName: "about" */ './views/Data.vue')
-    },
+    }
     // {
     //   path: '/about',
     //   name: 'about',

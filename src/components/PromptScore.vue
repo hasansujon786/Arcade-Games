@@ -1,14 +1,11 @@
 <template>
   <section @click="closePrompt" class="PromptScore flex-center">
     <div class="content">
-      <!-- <h2 class="center">O <sup>+</sup></h2>
-      <h3>{{ 3  }} - {{ 0 }}</h3> -->
-      <span v-if="won">
+      <span v-if="someoneWon">
         <h3>Won</h3>
       </span>
       <span v-else>
         <h3>Draw</h3>
-
       </span>
     </div>
   </section>
@@ -23,17 +20,15 @@ export default {
   props: {
     closePrompt: {
       type: Function,
+      required: true
     },
-    won: {
+    someoneWon: {
       type: Boolean,
-      // default: false
-    },
+      required: true
+    }
   },
-  methods: {
-  },
-  computed: {
-
-  }
+  methods: {},
+  computed: {}
 }
 </script>
 
