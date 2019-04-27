@@ -8,17 +8,16 @@
     </main>
   </section>
 </template>
- 
+
 <script>
 export default {
   name: 'defaultLayout',
   data() {
-    return {
-    }
-  },
+    return {}
+  }
 }
 </script>
- 
+
 <style lang="scss" scoped>
 .defaultLayout {
   height: 100vh;
