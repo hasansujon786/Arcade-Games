@@ -5,8 +5,10 @@
       <div class="popupMenu__card">
         <p>Do you really want to leave? you have unsaved changes!</p>
         <section class="right">
-          <button @click="exitGame(true)" class="link-btn">Exit the Game</button>
-          <button @click="exitGame(false)" class="link-btn ml-4" style="--c: var(--primary)">
+          <button @click="exitGame(true)" class="link-btn" style="--c: var(--primary)">
+            Exit the Game
+          </button>
+          <button @click="exitGame(false)" class="link-btn ml-4">
             Back to Game
           </button>
         </section>

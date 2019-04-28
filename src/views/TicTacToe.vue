@@ -28,7 +28,7 @@
       v-if="ifGameDraw || showPrompt"
     ></ag-prompt-score>
 
-    <PopupMenu v-if="showMenu" :exitGame="exitGame" :openOrCloseMenu="openOrCloseMenu" />
+    <PopupMenu v-if="showMenu" :exitGame="exitGame" />
   </Layout>
 </template>
 
@@ -61,7 +61,8 @@ export default {
       showPrompt: false,
       X: 0,
       O: 0,
-      showMenu: false
+      showMenu: false,
+      allowToExit: false
     }
   },
   methods: {
@@ -137,6 +138,16 @@ export default {
       } else {
         this.O++
       }
+    },
+    openMenu(bool) {
+      this.showMenu = bool
+    },
+    exitGame(answer) {
+      this.openMenu(false)
+      if (answer) {
+        this.allowToExit = answer
+        this.$router.go(-1)
+      }
     }
   },
   computed: {
@@ -153,6 +164,14 @@ export default {
     agPromptScore: PromptScoreVue,
     ScoreBoard,
     PopupMenu
+  },
+  beforeRouteLeave(to, from, next) {
+    this.openMenu(true)
+    if (this.allowToExit) {
+      next()
+    } else {
+      next(false)
+    }
   }
 }
 </script>
