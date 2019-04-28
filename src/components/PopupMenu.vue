@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/modules/media-queries/mobile-first';
+
 .popupMenu {
   background: rgba(23, 16, 59, 0.8);
   position: absolute;
@@ -47,11 +49,15 @@ export default {
   &__card {
     background: rgb(9, 6, 29);
     width: 80vw;
+    max-width: 400px;
     margin: 0 auto;
     padding: 3rem 2rem;
   }
   &__body {
     margin-top: 30%;
+    @include respond-mf(lt-tablet) {
+      margin-top: 10%;
+    }
   }
 }
 </style>

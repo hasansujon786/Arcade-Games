@@ -1,6 +1,6 @@
 <template>
   <div class="Welcome">
-    <div class="nav justify-content-between">
+    <div class="nav">
       <router-link :to="{ name: 'TicTacToe' }">TicTacToe</router-link>
       <router-link :to="{ name: 'MemoryBooster' }">MemoryBooster</router-link>
       <router-link :to="{ name: 'RockPaperScissor' }">RockPaperScissor</router-link>
@@ -23,15 +23,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/sass/modules/media-queries/mobile-first';
+
 .nav {
   margin: 0rem auto;
-  padding: 0 2rem;
+  max-width: 100rem;
+  margin-top: 7%;
   display: flex;
   flex-wrap: wrap;
-
-  max-width: 90rem;
   flex-direction: column;
-  margin-top: 7%;
+  justify-content: space-around;
+  @include respond-mf(lt-phablet) {
+    flex-direction: row;
+  }
+  @include respond-mf(lt-desktop) {
+    justify-content: space-between;
+  }
 
   a {
     height: 20rem;
@@ -42,6 +49,12 @@ export default {
     align-items: center;
     justify-content: center;
     margin-bottom: 3rem;
+    @include respond-mf(lt-phablet) {
+      flex: 0 0 45%;
+    }
+    @include respond-mf(lt-desktop) {
+      flex: 0 0 32%;
+    }
   }
 }
 </style>
