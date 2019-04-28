@@ -40,3 +40,18 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;       }
     margin-bottom: 2rem;
   }
 }
+
+// typography
+.right { text-align: right !important; }
+.left { text-align: left !important; }
+.center { text-align: center !important; }
+
+.text-primary { color: var(--primary);}
+.text-secondary { color: var(--secondary);}
+.text-success { color: var(--success);}
+.text-warning { color: var(--warning);}
+.text-danger { color: var(--danger);}
+.text-info { color: var(--info);}
+.text-light { color: var(--light);}
+.text-dark { color: var(--dark);}
+.text-muted { color: var(--font-color-secondary);}

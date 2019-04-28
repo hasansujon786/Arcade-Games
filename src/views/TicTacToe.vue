@@ -27,12 +27,15 @@
       :someoneWon="isSomeoneWon"
       v-if="ifGameDraw || showPrompt"
     ></ag-prompt-score>
+
+    <PopupMenu />
   </Layout>
 </template>
 
 <script>
 import PromptScoreVue from '@/components/PromptScore.vue'
 import ScoreBoard from '@/components/ScoreBoard.vue'
+import PopupMenu from '@/components/PopupMenu.vue'
 
 export default {
   name: 'TicTacToe',
@@ -147,7 +150,8 @@ export default {
   },
   components: {
     agPromptScore: PromptScoreVue,
-    ScoreBoard
+    ScoreBoard,
+    PopupMenu
   },
 
   beforeRouteLeave(to, from, next) {
@@ -214,12 +218,5 @@ export default {
 .link-btn {
   font-size: 3.8rem;
   color: var(--dark);
-}
-
-@media only screen and (max-width: 320px) {
-  .cells {
-    width: 38rem;
-    height: 38rem;
-  }
 }
 </style>

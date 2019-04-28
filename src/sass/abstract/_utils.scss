@@ -12,6 +12,7 @@
 
     box-shadow: none !important; } }
 
+    
 
 // width & height
 .h-100 {
@@ -38,20 +39,11 @@
   align-items: center !important; }
 
 
-
-// typography
-.right { text-align: right !important; }
-.left { text-align: left !important; }
-.center { text-align: center !important; }
-
-// colors
-.black-text { color: #000 !important}
-.white-text { color: #fff !important}
-.dark-text { color: #343a40 !important}
-
 // Shadows
 .shadow { box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !important; }
 .shadow-light { box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !important; }
+
+.text-shadow { text-shadow: 0 3px 6px var(--dark); }
 
 
 // border 
@@ -61,8 +53,5 @@
 .bd-1 { border-width: 1 !important;}
 .bd-2 { border-width: 2 !important;}
 
-.pointer { cursor: pointer; }    
 
-.rounded-circle {
-  border-radius: 50% !important;
-}
+.transition-all { transition: all 400ms ease-out; }
