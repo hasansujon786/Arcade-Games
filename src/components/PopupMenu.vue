@@ -1,14 +1,14 @@
 <template>
   <div class="popupMenu">
     <section class="popupMenu__body">
-      <h1 class="center">Tic Tac Toe</h1>
+      <h1 class="center text-danger">Tic Tac Toe</h1>
       <div class="popupMenu__card">
-        <p>Do you really want to leave? you have unsaved changes!</p>
-        <section class="right">
-          <button @click="exitGame(true)" class="link-btn" style="--c: var(--primary)">
+        <p class="paragraph">Do you really want to leave? you have unsaved changes!</p>
+        <section class="center">
+          <button @click="exitGame(true)" class="link-btn" style="--c: var(--danger)">
             Exit the Game
           </button>
-          <button @click="exitGame(false)" class="link-btn ml-4">
+          <button @click="exitGame(false)" class="link-btn ml-4" style="--c: var(--primary)">
             Back to Game
           </button>
         </section>
@@ -34,12 +34,16 @@ export default {
 
 <style lang="scss" scoped>
 .popupMenu {
-  background: rgba(255, 255, 255, 0.185);
+  background: rgba(23, 16, 59, 0.8);
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  h1 {
+    font-weight: bold;
+    font-size: 5rem;
+  }
   &__card {
     background: rgb(9, 6, 29);
     width: 80vw;

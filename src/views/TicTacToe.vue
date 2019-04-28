@@ -227,4 +227,47 @@ export default {
   font-size: 3.8rem;
   color: var(--dark);
 }
+
+@keyframes circleAnim {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -1296px 0px;
+  }
+}
+.circle {
+  animation-duration: 600ms;
+  animation-timing-function: steps(54);
+  width: 24px;
+  height: 24px;
+  animation-fill-mode: forwards;
+  background-image: url('~@/assets/svg/circle/sprite_60fps.svg');
+  background-repeat: no-repeat;
+  transform: scale(4);
+}
+.circle.play {
+  animation-name: circleAnim;
+}
+
+@keyframes crossAnim {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -1296px 0px;
+  }
+}
+.cross {
+  animation-duration: 600ms;
+  animation-timing-function: steps(54);
+  width: 24px;
+  height: 24px;
+  animation-fill-mode: forwards;
+  transform: scale(5);
+  background-image: url('~@/assets/svg/cross/sprite_60fps.svg');
+}
+.cross.play {
+  animation-name: crossAnim;
+}
 </style>

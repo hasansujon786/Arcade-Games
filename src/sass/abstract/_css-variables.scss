@@ -25,19 +25,19 @@
   --hot-pink: #ff4685;
 
   // Theme colors
-  --primary: var(--hot-pink);
+  --primary: #80cbc4;
   --primary-dark: hsl(203, 100%, 38%);
 
-  --secondary: #80cbc4;
+  --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
-  --danger: #dc3545;
+  --danger: var(--hot-pink);
   --light: #f8f9fa;
   --dark: #343a40;
 
   // Link colors
-  --link-color: #007bff;
+  --link-color: #1586ff;
   --link-color-dark: #0062cc;
 
   // fonts
