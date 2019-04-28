@@ -28,7 +28,7 @@
       v-if="ifGameDraw || showPrompt"
     ></ag-prompt-score>
 
-    <PopupMenu />
+    <PopupMenu v-if="showMenu" :exitGame="exitGame" :openOrCloseMenu="openOrCloseMenu" />
   </Layout>
 </template>
 
@@ -60,7 +60,8 @@ export default {
       addClass: false,
       showPrompt: false,
       X: 0,
-      O: 0
+      O: 0,
+      showMenu: false
     }
   },
   methods: {
@@ -95,7 +96,7 @@ export default {
       // loop all the possible combinations
       for (let i = 0; i < this.combinations.length; i++) {
         if (
-          /* 
+          /*
             !Most complex part! I won't bother you'll get it, after a while
           */
           this.cells[this.combinations[i][0]] == playerMark &&
@@ -152,15 +153,6 @@ export default {
     agPromptScore: PromptScoreVue,
     ScoreBoard,
     PopupMenu
-  },
-
-  beforeRouteLeave(to, from, next) {
-    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-    if (answer) {
-      next()
-    } else {
-      next(false)
-    }
   }
 }
 </script>
@@ -168,8 +160,6 @@ export default {
 <style lang="scss" scoped>
 .cell__bg,
 .TicTacToe {
-  --royal-blue: #3a54ff;
-  --hot-pink: #ff4685;
   --bd-color: rgba(114, 114, 114, 0.36);
   background-color: #161631;
 }
@@ -203,11 +193,10 @@ export default {
     font-size: 3rem;
     width: 100%;
     height: 100%;
+    outline: none;
     transition: all 0.5s ease;
   }
-  .disable {
-    // background: rgb(218, 218, 218);
-  }
+  // .disable { }
 
   #rotate-cell {
     transform: rotate(360deg);

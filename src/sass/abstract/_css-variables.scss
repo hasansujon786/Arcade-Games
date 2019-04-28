@@ -21,12 +21,14 @@
   --black: #000;
   --gray: #6c757d;
   --gray-dark: #343a40;
+  --royal-blue: #3a54ff;
+  --hot-pink: #ff4685;
 
   // Theme colors
-  --primary: #08d;
+  --primary: var(--hot-pink);
   --primary-dark: hsl(203, 100%, 38%);
 
-  --secondary: #6c757d;
+  --secondary: #80cbc4;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
@@ -34,8 +36,7 @@
   --light: #f8f9fa;
   --dark: #343a40;
 
-
-  // Link colors 
+  // Link colors
   --link-color: #007bff;
   --link-color-dark: #0062cc;
 
@@ -47,7 +48,6 @@
 
   // grays
 
-
   // border
   --border-color: #e6e6e6;
 
@@ -55,4 +55,3 @@
   --radio-transition: all 0.25s linear;
   --global-radios: 3px;
 }
-

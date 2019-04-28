@@ -3,10 +3,12 @@
     <section class="popupMenu__body">
       <h1 class="center">Tic Tac Toe</h1>
       <div class="popupMenu__card">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, delectus.</p>
+        <p>Do you really want to leave? you have unsaved changes!</p>
         <section class="right">
-          <button class="link-btn">Exit Game</button>
-          <button class="link-btn ml-4">Back to Game</button>
+          <button @click="exitGame(true)" class="link-btn">Exit the Game</button>
+          <button @click="exitGame(false)" class="link-btn ml-4" style="--c: var(--primary)">
+            Back to Game
+          </button>
         </section>
       </div>
     </section>
@@ -18,6 +20,12 @@ export default {
   name: 'popupMenu',
   data() {
     return {}
+  },
+  props: {
+    exitGame: {
+      type: Function,
+      required: true
+    }
   }
 }
 </script>
@@ -39,13 +47,5 @@ export default {
   &__body {
     margin-top: 30%;
   }
-}
-
-.link-btn {
-  font-size: 2rem;
-  background: transparent;
-  border-width: 0;
-  color: #007bff;
-  cursor: pointer;
 }
 </style>

@@ -2,6 +2,7 @@
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .button {
+  outline: none;
   display: inline-block;
   height: 38px;
   padding: 0 30px;
@@ -10,7 +11,7 @@
   font-size: 11px;
   font-weight: 600;
   line-height: 38px;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
@@ -22,9 +23,9 @@
 }
 
 input {
-  &[type="submit"],
-  &[type="reset"],
-  &[type="button"] {
+  &[type='submit'],
+  &[type='reset'],
+  &[type='button'] {
     display: inline-block;
     height: 38px;
     padding: 0 30px;
@@ -33,7 +34,7 @@ input {
     font-size: 11px;
     font-weight: 600;
     line-height: 38px;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
@@ -52,9 +53,9 @@ input {
 }
 
 input {
-  &[type="submit"]:hover,
-  &[type="reset"]:hover,
-  &[type="button"]:hover {
+  &[type='submit']:hover,
+  &[type='reset']:hover,
+  &[type='button']:hover {
     color: $dark-grey;
     border-color: lighten($dark-grey, 33.3%);
     outline: 0;
@@ -68,9 +69,9 @@ input {
 }
 
 input {
-  &[type="submit"]:focus,
-  &[type="reset"]:focus,
-  &[type="button"]:focus {
+  &[type='submit']:focus,
+  &[type='reset']:focus,
+  &[type='button']:focus {
     color: $dark-grey;
     border-color: lighten($dark-grey, 33.3%);
     outline: 0;
@@ -84,9 +85,9 @@ input {
 }
 
 input {
-  &[type="submit"].button-primary,
-  &[type="reset"].button-primary,
-  &[type="button"].button-primary {
+  &[type='submit'].button-primary,
+  &[type='reset'].button-primary,
+  &[type='button'].button-primary {
     color: #fff;
     background-color: $primary-color;
     border-color: $primary-color;
@@ -100,9 +101,9 @@ input {
 }
 
 input {
-  &[type="submit"].button-primary:hover,
-  &[type="reset"].button-primary:hover,
-  &[type="button"].button-primary:hover {
+  &[type='submit'].button-primary:hover,
+  &[type='reset'].button-primary:hover,
+  &[type='button'].button-primary:hover {
     color: #fff;
     background-color: $link-color;
     border-color: $link-color;
@@ -116,20 +117,20 @@ input {
 }
 
 input {
-  &[type="submit"].button-primary:focus,
-  &[type="reset"].button-primary:focus,
-  &[type="button"].button-primary:focus {
+  &[type='submit'].button-primary:focus,
+  &[type='reset'].button-primary:focus,
+  &[type='button'].button-primary:focus {
     color: #fff;
     background-color: $link-color;
     border-color: $link-color;
   }
-  &[type="email"],
-  &[type="number"],
-  &[type="search"],
-  &[type="text"],
-  &[type="tel"],
-  &[type="url"],
-  &[type="password"] {
+  &[type='email'],
+  &[type='number'],
+  &[type='search'],
+  &[type='text'],
+  &[type='tel'],
+  &[type='url'],
+  &[type='password'] {
     height: 38px;
     padding: 6px 10px; // The 6px vertically centers text on FF, ignored by Webkit
     background-color: #fff;
@@ -138,4 +139,15 @@ input {
     box-shadow: none;
     box-sizing: border-box;
   }
+}
+
+.link-btn {
+  --c: var(--secondary);
+  outline: none;
+  font-size: 2rem;
+  background: transparent;
+  border-width: 0;
+  color: var(--c, #007bff);
+  cursor: pointer;
+  padding: 10px 10px;
 }
