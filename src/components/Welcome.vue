@@ -48,6 +48,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 17px;
     margin-bottom: 3rem;
     @include respond-mf(lt-phablet) {
       flex: 0 0 45%;

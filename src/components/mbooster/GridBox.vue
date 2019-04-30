@@ -38,9 +38,10 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 0.5rem;
-  width: 100%;
   margin-top: 5rem;
+  width: 100%;
   height: 75vh;
+  min-height: 400px;
 }
 
 .cells {
@@ -88,7 +89,6 @@ export default {
   transition: transform 1s;
 }
 .won {
-  background: rgb(151, 125, 125);
   opacity: 0.1;
 }
 

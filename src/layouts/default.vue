@@ -19,7 +19,6 @@ export default {
 <style lang="scss" scoped>
 .defaultLayout {
   height: 100vh;
-  --game-bg: #161631;
 }
 main {
   position: relative;

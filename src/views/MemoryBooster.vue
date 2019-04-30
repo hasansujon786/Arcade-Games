@@ -139,8 +139,6 @@ export default {
 
 <style lang="scss" scoped>
 .mBooster {
-  --game-bg: #161631;
-  background: var(--game-bg);
   height: 100%;
 }
 .view-port {
