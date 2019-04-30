@@ -3,7 +3,7 @@
     <section class="mBooster ">
       <div class="container">
         <div class="view-port">
-          <control-box></control-box>
+          <control-box :score="score"></control-box>
           <grid-box :cells="cells" :turn="turn"></grid-box>
         </div>
       </div>

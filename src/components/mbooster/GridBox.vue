@@ -48,23 +48,23 @@ export default {
   cursor: pointer;
 
   &__both {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 3px;
     width: 100%;
     height: 100%;
-    background: rgb(235, 170, 170);
     transition: all 0.3s;
     ackface-visibility: visible !important;
   }
 
   &__front {
     background: rgb(9, 6, 29);
+    border: 1px solid rgba(112, 112, 112, 0.3);
     &:hover {
       background: var(--hot-pink);
     }
   }
   &__back {
+    background: rgb(175, 174, 184);
+    border: 1px solid rgba(133, 124, 124, 0.801);
   }
 }
 

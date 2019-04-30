@@ -91,7 +91,7 @@
         </g>
       </svg>
 
-      <span class="ml-5">0</span>
+      <span class="ml-5">{{ score }}</span>
     </ui-pill>
   </div>
 </template>
@@ -100,8 +100,11 @@
 import PillVue from '../ui/Pill.vue'
 export default {
   name: 'controlBox',
-  data() {
-    return {}
+  props: {
+    score: {
+      type: Number,
+      default: 0
+    }
   },
   components: {
     uiPill: PillVue
