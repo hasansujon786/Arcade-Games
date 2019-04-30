@@ -139,11 +139,11 @@ export default {
         this.O++
       }
     },
-    openMenu(bool) {
-      this.showMenu = bool
+    openMenu() {
+      this.showMenu = !this.showMenu
     },
     exitGame(answer) {
-      this.openMenu(false)
+      this.openMenu()
       if (answer) {
         this.allowToExit = answer
         this.$router.go(-1)
@@ -166,7 +166,7 @@ export default {
     PopupMenu
   },
   beforeRouteLeave(to, from, next) {
-    this.openMenu(true)
+    this.openMenu()
     if (this.allowToExit) {
       next()
     } else {

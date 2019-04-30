@@ -1,8 +1,6 @@
 <template>
   <section class="defaultLayout">
-    <!-- <header class="center">
-      <router-link class="center" to="/">Home</router-link>
-    </header> -->
+    <!-- <header class="center"><router-link class="center" to="/">Home</router-link></header> -->
     <main>
       <slot></slot>
     </main>
@@ -21,6 +19,7 @@ export default {
 <style lang="scss" scoped>
 .defaultLayout {
   height: 100vh;
+  --game-bg: #161631;
 }
 main {
   position: relative;

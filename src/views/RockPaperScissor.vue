@@ -25,19 +25,19 @@
               src="@/assets/rps/rock.jpg"
               alt="rock"
               class="rounded-circle"
-            >
+            />
             <img
               v-show="compSelector == 1"
               src="@/assets/rps/paper.jpg"
               alt="paper"
               class="rounded-circle"
-            >
+            />
             <img
               v-show="compSelector == 2"
               src="@/assets/rps/scissor.jpg"
               alt="scissor"
               class="rounded-circle"
-            >
+            />
           </button>
         </figure>
       </section>
@@ -46,24 +46,22 @@
         <div class="m-auto" style="max-width: 54rem">
           <figure class="user__img-box m-auto">
             <button @click="getUserChoice('rock')" class="user__btn chose-btn border">
-              <img src="@/assets/rps/rock.jpg" alt="rock" class="rounded-circle">
+              <img src="@/assets/rps/rock.jpg" alt="rock" class="rounded-circle" />
             </button>
           </figure>
           <figure class="user__img-box m-auto">
             <button @click="getUserChoice('scissor')" class="user__btn chose-btn border">
-              <img src="@/assets/rps/scissor.jpg" alt="scissor" class="rounded-circle">
+              <img src="@/assets/rps/scissor.jpg" alt="scissor" class="rounded-circle" />
             </button>
           </figure>
           <figure class="user__img-box m-auto">
             <button @click="getUserChoice('paper')" class="user__btn chose-btn border">
-              <img src="@/assets/rps/paper.jpg" alt="paper" class="rounded-circle">
+              <img src="@/assets/rps/paper.jpg" alt="paper" class="rounded-circle" />
             </button>
           </figure>
         </div>
       </section>
-
-
-    </section> 
+    </section>
   </Layout>
 </template>
 
@@ -80,8 +78,7 @@ export default {
       userChoice: null,
       userCanChoice: false,
       intervel: null,
-      showTip: false,
-      
+      showTip: false
     }
   },
   methods: {
@@ -164,9 +161,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.RockPaperScissor {
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+.rounded-circle {
+  border-radius: 50%;
+}
+
 .score-box {
   max-width: 50rem;
 }
+
 .chose-btn {
   width: 100%;
   height: 100%;
@@ -175,6 +183,7 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
 .pressed {
   border: 1px solid #000 !important;
 }
@@ -187,6 +196,7 @@ export default {
 
   // &__btn { }
 }
+
 .user {
   text-align: center;
   &__img-box {
