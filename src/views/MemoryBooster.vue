@@ -1,12 +1,24 @@
 <template>
   <Layout>
-    <section class="mBooster ">
+    <section class="mBooster">
       <div class="container">
         <div class="view-port">
-          <control-box :score="score"></control-box>
-          <grid-box :cells="cells" :turn="turn"></grid-box>
+          <control-box :shuffle="shuffle" :resetGame="resetGame" :score="score"></control-box>
+          <grid-box :class="{ shrink: isTableShrinked }" :cells="cells" :turn="turn"></grid-box>
         </div>
       </div>
+
+      <popup-menu v-show="isTableShrinked" name="memory booster">
+        <p class="paragraph px-5 center">Do you really want to leave? you have unsaved changes!</p>
+        <section class="center">
+          <button @click="$router.go(-1)" class="link-btn" style="--c: var(--danger)">
+            Exit
+          </button>
+          <button @click="startNewGame" class="link-btn ml-4" style="--c: var(--primary)">
+            Play
+          </button>
+        </section>
+      </popup-menu>
     </section>
   </Layout>
 </template>
@@ -14,6 +26,8 @@
 <script>
 import ControlBoxVue from '../components/mbooster/ControlBox.vue'
 import GridBoxVue from '../components/mbooster/GridBox.vue'
+import PopupMenu from '@/components/PopupMenu.vue'
+
 export default {
   name: 'mBooster',
   data() {
@@ -25,7 +39,8 @@ export default {
       seIndex2: 0, //  keeps the][] value of 2nd selected cell
       isSelected: false, // checks if the user has selected his first choice
       score: 0, // user score
-      allwotoTurn: true // checks if the user is allowed to turn or not
+      allwotoTurn: true, // checks if the user is allowed to turn or not
+      isTableShrinked: true
     }
   },
   methods: {
@@ -119,16 +134,48 @@ export default {
     },
     alertNow(msg) {
       alert(msg)
+    },
+    showAllHiddenCards() {
+      const cells = [
+        { id: 1, val: '1', cls: '', id2: 'a', cellShow: false },
+        { id: 2, val: '2', cls: '', id2: 'b', cellShow: false },
+        { id: 3, val: '3', cls: '', id2: 'c', cellShow: false },
+        { id: 4, val: '4', cls: '', id2: 'd', cellShow: false },
+        { id: 5, val: '5', cls: '', id2: 'p', cellShow: false },
+        { id: 6, val: '6', cls: '', id2: 'e', cellShow: false },
+        { id: 7, val: '7', cls: '', id2: 'f', cellShow: false },
+        { id: 8, val: '8', cls: '', id2: 'g', cellShow: false },
+        { id: 9, val: '1', cls: '', id2: 'h', cellShow: false },
+        { id: 10, val: '2', cls: '', id2: 'i', cellShow: false },
+        { id: 12, val: '3', cls: '', id2: 'j', cellShow: false },
+        { id: 11, val: '4', cls: '', id2: 'k', cellShow: false },
+        { id: 13, val: '5', cls: '', id2: 'l', cellShow: false },
+        { id: 14, val: '6', cls: '', id2: 'm', cellShow: false },
+        { id: 15, val: '7', cls: '', id2: 'n', cellShow: false },
+        { id: 16, val: '8', cls: '', id2: 'o', cellShow: false }
+      ]
+      this.cells = cells
+    },
+    startNewGame() {
+      this.isTableShrinked = !this.isTableShrinked
+      this.shuffle()
     }
   },
   computed: {},
   components: {
     controlBox: ControlBoxVue,
-    gridBox: GridBoxVue
+    gridBox: GridBoxVue,
+    popupMenu: PopupMenu
   },
   created() {
+    // this.showAllHiddenCards()
     this.setCellValue()
-    this.shuffle()
+    // this.shuffle()
+  },
+  mounted() {
+    // this.shuffle()
+    // this.isTableShrinked = false
+    // setTimeout(() => {}, 1000)
   }
   // beforeRouteLeave(to, from, next) {
   //   console.log('method calletd')
@@ -140,10 +187,15 @@ export default {
 <style lang="scss" scoped>
 .mBooster {
   height: 100%;
+  position: relative;
 }
 .view-port {
   max-width: 50rem;
   margin: 0 auto;
+}
+.shrink {
+  // transform: scale(0);
+  opacity: 0;
 }
 
 // .gameName {

@@ -18,7 +18,7 @@
       </section>
 
       <section class="center">
-        <button @click="newGame" class="link-btn">Restart</button>
+        <button @click="newGame" class="link-btn big">Restart</button>
       </section>
     </section>
 
@@ -28,7 +28,17 @@
       v-if="ifGameDraw || showPrompt"
     ></ag-prompt-score>
 
-    <PopupMenu v-if="showMenu" :exitGame="exitGame" />
+    <PopupMenu v-if="showMenu" name="Tic Tac Toe">
+      <p class="paragraph px-5 center">Do you really want to leave? you have unsaved changes!</p>
+      <section class="center">
+        <button @click="exitGame(true)" class="link-btn" style="--c: var(--danger)">
+          Exit the Game
+        </button>
+        <button @click="exitGame(false)" class="link-btn ml-4" style="--c: var(--primary)">
+          Back to Game
+        </button>
+      </section>
+    </PopupMenu>
   </Layout>
 </template>
 
@@ -223,7 +233,7 @@ export default {
   }
 }
 
-.link-btn {
+.link-btn.big {
   font-size: 3.8rem;
   color: var(--dark);
 }

@@ -42,6 +42,7 @@ export default {
   width: 100%;
   height: 75vh;
   min-height: 400px;
+  transition: all 0.5s ease-out;
 }
 
 .cells {

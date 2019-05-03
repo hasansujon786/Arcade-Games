@@ -1,6 +1,6 @@
 <template>
   <div class="controlBox d-flex align-items-center justify-content-between pt-5">
-    <ui-pill>
+    <ui-pill @click="resetGame">
       <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
         <g id="icon-clock" transform="translate(-48 -21)">
           <g
@@ -30,7 +30,7 @@
       <span class="ml-5">00.02</span>
     </ui-pill>
 
-    <ui-pill>
+    <ui-pill @click="shuffle">
       <svg xmlns="http://www.w3.org/2000/svg" width="27" height="24" viewBox="0 0 27 24">
         <defs>
           <clipPath id="a"><path d="M0 0h360v640H0z" /></clipPath>
@@ -104,6 +104,14 @@ export default {
     score: {
       type: Number,
       default: 0
+    },
+    resetGame: {
+      type: Function,
+      required: true
+    },
+    shuffle: {
+      type: Function,
+      required: true
     }
   },
   components: {

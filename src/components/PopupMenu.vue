@@ -1,17 +1,9 @@
 <template>
   <div class="popupMenu">
     <section class="popupMenu__body">
-      <h1 class="center text-danger">Tic Tac Toe</h1>
-      <div class="popupMenu__card">
-        <p class="paragraph">Do you really want to leave? you have unsaved changes!</p>
-        <section class="center">
-          <button @click="exitGame(true)" class="link-btn" style="--c: var(--danger)">
-            Exit the Game
-          </button>
-          <button @click="exitGame(false)" class="link-btn ml-4" style="--c: var(--primary)">
-            Back to Game
-          </button>
-        </section>
+      <div class="popupMenu__card bd">
+        <h1 class="center text-danger">{{ name }}</h1>
+        <slot></slot>
       </div>
     </section>
   </div>
@@ -24,9 +16,9 @@ export default {
     return {}
   },
   props: {
-    exitGame: {
-      type: Function,
-      required: true
+    name: {
+      type: String,
+      default: 'Arcade Games'
     }
   }
 }
@@ -43,8 +35,7 @@ export default {
   left: 0;
   right: 0;
   h1 {
-    font-weight: bold;
-    font-size: 5rem;
+    text-transform: capitalize;
   }
   &__card {
     background: rgb(9, 6, 29);
