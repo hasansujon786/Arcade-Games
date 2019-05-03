@@ -28,16 +28,8 @@
       v-if="ifGameDraw || showPrompt"
     ></ag-prompt-score>
 
-    <PopupMenu v-if="showMenu" name="Tic Tac Toe">
-      <p class="paragraph px-5 center">Do you really want to leave? you have unsaved changes!</p>
-      <section class="center">
-        <button @click="exitGame(true)" class="link-btn" style="--c: var(--danger)">
-          Exit the Game
-        </button>
-        <button @click="exitGame(false)" class="link-btn ml-4" style="--c: var(--primary)">
-          Back to Game
-        </button>
-      </section>
+    <PopupMenu v-if="showMenu" :exit="exitGame" name="Tic Tac Toe">
+      <p class="paragraph center">Do you really want to leave?</p>
     </PopupMenu>
   </Layout>
 </template>

@@ -8,16 +8,8 @@
         </div>
       </div>
 
-      <popup-menu v-show="isTableShrinked" name="memory booster">
-        <p class="paragraph px-5 center">Do you really want to leave? you have unsaved changes!</p>
-        <section class="center">
-          <button @click="$router.go(-1)" class="link-btn" style="--c: var(--danger)">
-            Exit
-          </button>
-          <button @click="startNewGame" class="link-btn ml-4" style="--c: var(--primary)">
-            Play
-          </button>
-        </section>
+      <popup-menu v-if="isTableShrinked" :exit="exitGame" name="memory booster">
+        <p class="paragraph center">Do you really want to leave?</p>
       </popup-menu>
     </section>
   </Layout>
@@ -158,7 +150,15 @@ export default {
     },
     startNewGame() {
       this.isTableShrinked = !this.isTableShrinked
+      this.setCellValue()
       this.shuffle()
+    },
+    exitGame(answer) {
+      if (answer) {
+        this.$router.go(-1)
+      } else {
+        this.startNewGame()
+      }
     }
   },
   computed: {},
@@ -168,8 +168,8 @@ export default {
     popupMenu: PopupMenu
   },
   created() {
-    // this.showAllHiddenCards()
-    this.setCellValue()
+    this.showAllHiddenCards()
+    // this.setCellValue()
     // this.shuffle()
   },
   mounted() {
