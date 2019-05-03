@@ -9,7 +9,7 @@
           class="cells__both cells__front"
         ></div>
         <div :class="cell.cls" :key="cell.id2" v-else class="cells__both cells__back">
-          <img class="char" :src="require(`@/assets/char/${cell.val}.png`)" />
+          <img class="char" :src="require(`@/assets/mBooster/char/${cell.val}.png`)" />
         </div>
       </transition>
     </div>
@@ -37,7 +37,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 0.5rem;
+  grid-gap: 0.6rem;
   margin-top: 5rem;
   width: 100%;
   height: 75vh;
@@ -49,23 +49,25 @@ export default {
   cursor: pointer;
 
   &__both {
-    border-radius: 3px;
+    border-radius: 2px;
     width: 100%;
     height: 100%;
     transition: all 0.3s;
-    ackface-visibility: visible !important;
+    backface-visibility: visible !important;
+    border: 1px solid rgb(53, 49, 87);
+    &:hover {
+      border-color: rgb(131, 124, 190);
+    }
   }
 
   &__front {
-    background: rgb(9, 6, 29);
-    border: 1px solid rgba(112, 112, 112, 0.3);
-    &:hover {
-      background: var(--hot-pink);
-    }
+    background-color: rgb(9, 6, 29);
+    background-image: url('~@/assets/mBooster/card-bg.png');
+    background-size: cover;
+    background-position: center;
   }
   &__back {
     background: rgb(175, 174, 184);
-    border: 1px solid rgba(133, 124, 124, 0.801);
   }
 }
 
