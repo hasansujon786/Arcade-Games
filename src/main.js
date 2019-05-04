@@ -6,7 +6,7 @@ import './registerServiceWorker'
 import Layout from './layouts/default.vue'
 // import Button from './components/ui/ButtonUi.vue'
 
-import './sass/main.scss'
+// import './sass/main.scss'
 
 Vue.config.productionTip = false
 

@@ -1,10 +1,10 @@
 <template>
   <div class="popupMenu flex-center">
-    <section class="popupMenu__body">
-      <div class="popupMenu__card">
-        <h1 class="center text-danger">{{ name }}</h1>
+    <section class="popupMenu__body mt-40">
+      <div class="popupMenu__card px-4 py-4">
+        <h1 class="text-2xl text-danger mb-1">{{ name }}</h1>
         <slot></slot>
-        <div class="button-group right">
+        <div class="button-group mt-8 text-right">
           <button @click="exit(true)" class="buttons__home text-danger">
             <i class="icon icon-home"></i>
             Home
@@ -39,8 +39,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/sass/modules/media-queries/mobile-first';
-
 .popupMenu {
   background: rgba(23, 16, 59, 0.8);
   position: absolute;
@@ -57,12 +55,6 @@ export default {
     width: 80vw;
     max-width: 400px;
     margin: 0 auto;
-    padding: 3rem 2rem;
-  }
-  &__body {
-    @include respond-mf(lt-tablet) {
-      margin-top: -20%;
-    }
   }
 }
 
@@ -77,25 +69,13 @@ export default {
     flex-direction: column;
     background: transparent;
     border: none;
-    margin-left: 3rem;
+    margin-left: 1rem;
     font-weight: bold;
+    font-size: 14px;
     text-transform: lowercase;
     i {
       margin-bottom: 4px;
     }
   }
-}
-.icon {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.icon.icon-home {
-  background-image: url('~@/assets/svg/icon-home.svg');
-}
-.icon.icon-refresh {
-  background-image: url('~@/assets/svg/icon-refresh.svg');
 }
 </style>
