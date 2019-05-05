@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ui-notif></ui-notif>
+    <ui-notif v-if="false"></ui-notif>
     <h1 class="text-white text-4xl md:text-6xl text-center mt-6">arcade games</h1>
     <ag-welcome></ag-welcome>
   </div>
