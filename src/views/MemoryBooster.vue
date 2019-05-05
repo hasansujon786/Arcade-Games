@@ -1,15 +1,18 @@
 <template>
   <Layout>
-    <section class="mBooster">
-      <div class="container">
-        <div class="view-port">
-          <control-box :shuffle="shuffle" :resetGame="resetGame" :score="score"></control-box>
-          <grid-box :class="{ shrink: isTableShrinked }" :cells="cells" :turn="turn"></grid-box>
-        </div>
+    <section class="mBooster ">
+      <div class="view-port px-2">
+        <control-box :shuffle="shuffle" :resetGame="resetGame" :score="score"></control-box>
+        <grid-box
+          class="mt-3 md:mt-10"
+          :class="{ shrink: isTableShrinked }"
+          :cells="cells"
+          :turn="turn"
+        ></grid-box>
       </div>
 
       <popup-menu v-if="isTableShrinked" :exit="exitGame" name="memory booster">
-        <p class="paragraph center">Do you really want to leave?</p>
+        <p class="text-gray-500 text-sm pb-8">Do you really want to leave?</p>
       </popup-menu>
     </section>
   </Layout>
@@ -190,7 +193,7 @@ export default {
   position: relative;
 }
 .view-port {
-  max-width: 50rem;
+  max-width: 36rem;
   margin: 0 auto;
 }
 .shrink {

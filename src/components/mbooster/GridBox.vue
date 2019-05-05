@@ -37,11 +37,9 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 0.6rem;
-  margin-top: 5rem;
+  grid-gap: 0.3rem;
   width: 100%;
-  height: 75vh;
-  min-height: 400px;
+  height: 78vh;
   transition: all 0.5s ease-out;
 }
 

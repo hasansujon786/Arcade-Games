@@ -1,9 +1,8 @@
 <template>
   <Layout>
-    <section class="TicTacToe">
-      <ScoreBoard :O="O" :X="X" :isX="isX" :changePlayer="changePlayer" />
-
-      <section v-if="true" class="cells">
+    <section class="mx-auto h-full max-w-lg flex flex-col justify-between">
+      <controll-box :O="O" :X="X" :isX="isX" :changePlayer="changePlayer"></controll-box>
+      <section v-if="true" class="cells mx-auto bg-gray-800">
         <span class="cell__bg" v-for="(cell, i) in cells" :key="i">
           <button
             ref="cells"
@@ -17,8 +16,8 @@
         </span>
       </section>
 
-      <section class="center">
-        <button @click="newGame" class="link-btn big">Restart</button>
+      <section class="text-center md:pb-20">
+        <button @click="newGame" class="link-btn big text-primary">Restart</button>
       </section>
     </section>
 
@@ -29,15 +28,15 @@
     ></ag-prompt-score>
 
     <PopupMenu v-if="showMenu" :exit="exitGame" name="Tic Tac Toe">
-      <p class="paragraph center">Do you really want to leave?</p>
+      <p class="text-gray-500 text-sm pb-8">Do you really want to leave?</p>
     </PopupMenu>
   </Layout>
 </template>
 
 <script>
 import PromptScoreVue from '@/components/PromptScore.vue'
-import ScoreBoard from '@/components/ScoreBoard.vue'
 import PopupMenu from '@/components/PopupMenu.vue'
+import ControlBoxVue from '@/components/tictactoe/ControlBox.vue'
 
 export default {
   name: 'TicTacToe',
@@ -164,8 +163,8 @@ export default {
   },
   components: {
     agPromptScore: PromptScoreVue,
-    ScoreBoard,
-    PopupMenu
+    PopupMenu,
+    controllBox: ControlBoxVue
   },
   beforeRouteLeave(to, from, next) {
     this.openMenu()
@@ -179,29 +178,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cell__bg,
-.TicTacToe {
+.cell__bg {
   --bd-color: rgba(114, 114, 114, 0.36);
   background-color: #161631;
 }
-.TicTacToe {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
+
 .cells {
   display: grid;
-  max-width: 50rem;
-  max-height: 50rem;
-  height: 40rem;
-  width: 40rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-gap: 5px;
-  // grid border color
-  background-color: var(--bd-color);
+  grid-gap: 4px;
+  width: 20rem;
+  height: 20rem;
 
   &__cell {
     border-width: 0;
@@ -223,11 +211,6 @@ export default {
     transform: rotate(360deg);
     background: rgb(243, 237, 250);
   }
-}
-
-.link-btn.big {
-  font-size: 3.8rem;
-  color: var(--dark);
 }
 
 @keyframes circleAnim {

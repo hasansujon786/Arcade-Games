@@ -1,5 +1,8 @@
 <template>
-  <button class="ui-pill" v-on="$listeners">
+  <button
+    class="ui-pill border-2 border-gray-700 text-gray-500 text-2xl md:text-3xl py-1 px-6 md:px-8"
+    v-on="$listeners"
+  >
     <slot></slot>
   </button>
 </template>
@@ -15,13 +18,9 @@ export default {
 
 <style lang="scss" scoped>
 .ui-pill {
-  --bd-color: rgba(114, 114, 114, 0.36);
-  color: #9c9c9c;
+  --bg-color: rgba(114, 114, 114, 0.36);
   outline: none;
-  border: 2px solid var(--bd-color);
-  background-color: var(--bd-color);
-  font-size: 3rem;
-  padding: 0.7rem 3rem;
+  background-color: var(--bg-color);
   border-radius: 30px;
   transition: background-color 400ms ease;
   display: inline-flex;

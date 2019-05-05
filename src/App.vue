@@ -4,23 +4,25 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import './assets/css/main.css'
+export default {}
+</script>
 
 <style lang="scss">
-// text-shadow: 0px 2px 3px black;
-
 body {
   --game-bg: #161631;
   background: var(--game-bg);
 }
 
 .link-btn {
-  outline: none;
+  border: none;
   font-size: 2rem;
   background: transparent;
-  border-width: 0;
-  color: var(--c, var(--link-color));
   cursor: pointer;
   padding: 10px 10px;
+  &:focus {
+    outline-color: currentColor;
+  }
 }
 </style>
